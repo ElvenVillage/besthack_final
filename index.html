@@ -9,7 +9,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' type='text/css' href='style/index.css'>
-    <script src="bachground.js"></script>
 
     <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css" />
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -19,6 +18,7 @@
 
     <!-- THEME STYLES -->
     <link href="css/layout.min.css" rel="stylesheet" type="text/css" />
+    <script src="vendor/jquery.back-to-top.js " type="text/javascript "></script>
 
     <!-- Favicon -->
 
@@ -54,6 +54,7 @@
 
             });
         </script>
+        <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
 
         <div class="navbar-brand">
             <a class="navbar-item " href="" https://besthack.newpage.xyz/ ">
@@ -79,7 +80,10 @@
 
 
                 </div>
-
+                <div class="navbar-item has-dropdown is-hoverable ">
+                    <a class="navbar-link is-arrowless ">
+                        Консультация
+                </a>
                 <div class="navbar-item has-dropdown is-hoverable ">
                     <a class="navbar-link is-arrowless ">
                         Техподдержка
@@ -106,9 +110,10 @@
 
         </div>
     </nav>
+
     
     <section class="hero is-fullheight-with-navbar has-bg-img ">
-        <img src="back.jpg " class="is-back ">
+        <img src="back.jpg " class="is-back " >
         <div class="hero-body ">
             <div class="container " style="text-align: center; ">
                 <h1 class="col-sm-6 col-sm-offset-3 " style="color: white; ">ПОМОЩЬ СОТРУДНИКАМ<br> ВСЕГДА НА СВЯЗИ
@@ -237,7 +242,7 @@
                     <!-- End Latest Products -->
                 </div>
                 <!--// end row -->
-                <div class="row " id="con_hide " style="padding-top: 50px; ">
+                <div class="row " id="conhide " style="padding-top: 50px; ">
                     <!-- Latest Products -->
                     <div class="col-sm-4 sm-margin-b-50 ">
                         <div class="margin-b-20 ">
@@ -282,46 +287,46 @@
                     <div class="btn btn-info btn-flat ">Показать еще</button>
                     </div>
                 </div>
-                <script>
-                    con_hide.style.display = "none ";
-                    con_hide1.style.display = "none ";
-
-                    btn_hide.style.display = "none ";
-
-                    btn_show.onclick = function() {
-                        btn_show.style.display = "none ";
-                        con_hide.style.display = "flex ";
-                        con_hide1.style.display = "flex ";
-
-                        btn_hide.style.display = "flex ";
-
-                    }
-
-                    btn_hide.onclick = function() {
-                        con_hide.style.display = "none ";
-                        con_hide1.style.display = "none ";
-
-                        btn_show.style.display = "flex ";
-                        btn_hide.style.display = "none ";
-
-                    }
-                </script>
+                
     </section>
 
+<script>
+            conhide.style.display = "none ";
+            con_hide1.style.display = "none ";
 
+            btn_hide.style.display = "none ";
 
+            btn_show.onclick = function() {
+                btn_show.style.display = "none ";
+                con_hide.style.display = "flex ";
+                con_hide1.style.display = "flex ";
 
+                btn_hide.style.display = "flex ";
 
+            }
 
+            btn_hide.onclick = function() {
+                con_hide.style.display = "none ";
+                con_hide1.style.display = "none ";
 
+                btn_show.style.display = "flex ";
+                btn_hide.style.display = "none ";
 
-
-
+            }
+    </script>
 
     <footer>
         <hr>
         <p>Developed by &#171;NewPage1 &#187; &copy;2020</p>
     </footer>
-</body>
+
+    <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+        <!-- CORE PLUGINS -->
+        
+        <!-- PAGE LEVEL PLUGINS -->
+      
+
+        <!-- PAGE LEVEL SCRIPTS -->
+      
 
 </html>
