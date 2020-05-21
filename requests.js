@@ -68,12 +68,13 @@ function more(problems) {
 
 function loadTasks(pos) {
     var tasks = [];
-    fetch('https://besthack.newpage.xyz/ajax_api/last_tasks.php')
+    fetch('https://besthack.newpage.xyz/ajax_api/last_tasks.php?lid='+pos)
         .then(res => 
             res.json()
         )
         .then(response => {
             for (let i = 0; i < response.length; i++) {
+                pos++;
                 fetch('https://besthack.newpage.xyz/ajax_api/task_info.php?id=' + response[i])
                     .then(response2 => response2.json())
                     .then(response2 => more([response2]))
