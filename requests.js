@@ -1,15 +1,27 @@
 var container = document.getElementById("requests-list");
 
-function loadFromApi(pos) {
-    return fetch("https://raw.githubusercontent.com/ElvenVillage/besthack_final/master/test");
+
+function loadTasks(pos) {
+    var tasks = [];
+    fetch('https://besthack.newpage.xyz/ajax_api/last_tasks.php')
+        .then(response => response.json())
+        .then(response => {
+            for (let i = 0; i < response.length; i++) {
+                fetch('https://besthack.newpage.xyz/ajax_api/task_info.php')
+                    .then(response2 => response2.json())
+                    .then(response2 => tasks.push(response2))
+            }
+        })
+        .then(() => more(tasks))
 }
 
+
 var pos = 0;
-function more() {
-    loadFromApi(pos)
-        .then(response => response.json())
-        .then(problems => {
-            for (let i = 0; i < problems.length; i++) {
+function more(problems) {
+    for (let i = 0; i < problems.length; i++) {
+        fetch('https://besthack.newpage.xyz/ajax_api/user_info.php')
+            .then(response => response.json())
+            .then(user => {
                 var problem = problems[i];
 
                 var div = document.createElement('div');
@@ -21,12 +33,12 @@ function more() {
                 var imgFigure = document.createElement('figure');
                 imgFigure.className = "image is-64x64";
                 var img = document.createElement('img');
-                img.src = problem.avatar;
+                img.src = user.image;
                 img.className = 'is-rounded';
                 imgFigure.appendChild(img);
 
                 var username = document.createElement('div');
-                username.innerText = problem.username;
+                username.innerText = user.name + ' ' + user.surname;
                 username.className = 'column';
     
                 username.appendChild(imgFigure);
@@ -39,22 +51,23 @@ function more() {
 
                 statusProblem = document.createElement('div');
                 statusProblem.className = 'column';
-                statusProblem.innerText = problem.status;
+                statusProblem.innerText = true;
                 statusProblem.style = 'padding-top: 20px';
 
                 div.appendChild(profile); div.appendChild(textProblem); div.appendChild(statusProblem);
-                container.appendChild(div);}
-                pos += problems.length;
-})}
+                container.appendChild(div);
+    })
+}    pos += problems.length;
+}
 
 
 container.addEventListener('scroll', function() {
     if (container.scrollTop + container.clientHeight >= container.scrollHeight) {
-      more();
+      loadTasks(pos);
     }
   });
-more();
+loadTasks(pos);
 
 document.getElementById('gg').onclick = () => {
-    more();
+    loadTasks(pos);
 }
