@@ -15,11 +15,6 @@ img.is-back {
     transform: translateY(-1px);
 }
 
-body {
-    background-image: -webkit-gradient(linear, right top, left bottom, from(#F2E3C6), to(#A7A1A5));
-    background-image: linear-gradient(to left bottom, #F2E3C6 0%, #A7A1A5 100%);
-}
-
 .btn {
     display: inline-block;
     margin-bottom: 0;
