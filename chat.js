@@ -82,8 +82,8 @@ class User {
 }
 
 let users = [];
-//let gliders = 0;
-/*
+let gliders = 0;
+
 function appendToSlider(user) {
     if (gliders >= users.length) return;
     gliders++;
@@ -97,18 +97,8 @@ function appendToSlider(user) {
     persfig.append(image);
     pers.append(persfig);
     document.getElementById('glider').append(pers);
-    if (gliders === users.length) {
-        new Glider(document.querySelector('.glider'), {
-            slidesToShow: 15,
-            draggable: true,
-            dots: "#dots ",
-            arrows: {
-                prev: ".glider-prev ",
-                next: ".glider-next "
-            }
-        }); 
 }
-*/
+
 class RecyclerView {
 
     createNewDivs(maxMessages) {
