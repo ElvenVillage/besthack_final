@@ -4,12 +4,277 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Title Page</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.css" />
+    <title>T-Support/ЛК</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' type='text/css' href='lk.css'>
+
+
 </head>
 
 <body>
+    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation" style="border-radius: 0%;">
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+
+                // Get all "navbar-burger" elements
+                const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+                // Check if there are any navbar burgers
+                if ($navbarBurgers.length > 0) {
+
+                    // Add a click event on each of them
+                    $navbarBurgers.forEach(el => {
+                        el.addEventListener('click', () => {
+
+                            // Get the target from the "data-target" attribute
+                            const target = el.dataset.target;
+                            const $target = document.getElementById(target);
+
+                            // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+                            el.classList.toggle('is-active');
+                            $target.classList.toggle('is-active');
+
+                        });
+                    });
+                }
+
+            });
+        </script>
+
+        <div class="navbar-brand">
+            <a class="navbar-item" href="besthack.newpage.xyz">
+                <img src="https://github.com/ElvenVillage/besthack_final/blob/master/img/logo.png?raw=true" width="128" height="128">
+            </a>
+            <div class="navbar-end">
+                <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-end">
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link is-arrowless is-arrowless">
+                        <b>Все продукты</b>
+                    </a>
+
+
+                </div>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link is-arrowless">
+                    Техподдрежка
+                </a>
+
+
+                </div>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link is-arrowless">
+                    Авторизация
+                </a>
+
+
+                </div>
+                <div class="navbar-item "></div>
+            </div>
+
+
+        </div>
+    </nav>
+
+
+    <style>
+        body {
+            background-image: -webkit-gradient(linear, right top, left bottom, from(#F2E3C6), to(#A7A1A5));
+            background-image: linear-gradient(to left bottom, #F2E3C6 0%, #A7A1A5 100%);
+        }
+    </style>
+
+
+    <section class="ot" style="padding:0 10%  ;text-align: center; ">
+
+
+
+        <div class="hero-body">
+            <div class="container " style="text-align: center; background-color: #1ec4da; height: 100px;">
+                <h1 class="col-sm-6 is-size-3" style="color: white; padding-top: 30px ;">Лчный кабинет</h1>
+
+
+            </div>
+            <div class="box">
+
+                <div class="field-body" style="">
+                    <div class="field">
+                        <div class="control">
+                            <h2 class="is-size-4" style="margin-bottom: 20px;"><b>Личная информация</h2>
+
+
+
+                                <div class="columns is-centered ">
+
+                                    
+                    
+                    
+                                    <div class="column is-autos" style="text-align: center">
+                    
+                                        <div class="container" style="">
+                                            <div class="columns is-gapless is-multiline is-mobile" style="margin-right: 10%;">
+            
+                                                <div class="column is-narrow">
+                                                    <label class="label" style="margin-top: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;Имя:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                </div>
+                                                <div class="column is-auto">
+                                                    <input class="input is-half" type="text" placeholder="Название мерроприятия">
+                                                </div>
+                                            </div>
+                                            <div class="columns is-gapless is-multiline is-mobile" style="margin-right: 10%;">
+            
+                                                <div class="column is-narrow">
+                                                    <label class="label" style="margin-top: 5px;">Фамилия:&nbsp;&nbsp;</label>
+                                                </div>
+                                                <div class="column is-auto">
+                                                    <input class="input" type="text" placeholder="Название мерроприятия">
+                                                </div>
+                                            </div>
+                                            <div class="columns is-gapless is-multiline is-mobile" style="margin-right: 10%;">
+            
+                                                <div class="column is-narrow">
+                                                    <label class="label" style="margin-top: 5px;">Отчество:&nbsp;&nbsp;</label>
+                                                </div>
+                                                <div class="column is-auto">
+                                                    <input class="input" type="text" placeholder="Название мерроприятия">
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="columns is-gapless is-multiline is-mobile" style="margin-right: 10%;">
+            
+                                                <div class="column is-narrow">
+                                                    <label class="label" style="margin-top: 5px;">Область:&nbsp;&nbsp;</label>
+                                                </div>
+                                               
+                                            <div class="select is-fullwidth">
+                                                <select>
+                                            <option>Ученик</option>
+                                            <option>Преподаватель</option>
+                                            <option>Кот</option>
+                                        </select>
+                                            </div>
+                                                
+                                            </div>
+
+
+
+                                            </div>
+                                       
+                    
+                                    </div>
+                                    <div class="column is-auto ">
+                                        <figure class="image is-rounded ">
+                    
+                                            <input class="file-input is-rounded " type="file " id="upload_file " name="upload_file[] " multiple=" " accept="image/jpeg,image/png,image/gif " />
+                                            <img id="_image " src="user.jpg ">
+                                            <div id="image_preview " class="upload_preview "></div>
+                                        </figure>
+                                        <script>
+                                            $(function() {
+                    
+                                                $('#upload_file').change(function() {
+                                                    _image.style.display = "none ";
+                                                    var f = this.files,
+                                                        i, r = new RegExp(this.accept.replace(/,/g, '|')),
+                                                        b = $('#image_preview');
+                    
+                                                    for (i = 0; i < f.length; ++i) {
+                    
+                                                        if (r.test(f[i].type)) b.append("<img class='thumb' src='" + URL.createObjectURL(f[i]) + "'>");
+                                                    }
+                                                });
+                                            });
+                                        </script>
+                                <div class="container" style=" padding-top: 30px; display: flex; align-items: center;  justify-content: center;">
+
+                                       <div class="button " style="background-color: #25c7d9; border-radius: 5px;color: white;font-weight: normal ;">Добавить</div>
+                                </div>
+                                    </div>
+                                    
+                                </div>
+                              
+
+
+
+
+
+
+                                
+                        </div>
+                        <div class="control" style="margin-top: 90px;">
+                            <h2 class="is-size-4" style="margin-bottom: 30px;"><b>Контакты</h2>
+
+
+
+                                <div class="columns is-centered ">
+
+                                    
+                    
+                    
+                                    <div class="column is-autos" style="text-align: center">
+                    
+                                        <div class="container" style="">
+                                            <div class="columns is-gapless is-multiline is-mobile" style="margin-right: 10%;">
+            
+                                                <div class="column is-narrow">
+                                                    <label class="label" style="margin-top: 5px;">Телефон&nbsp;&nbsp;</label>
+                                                </div>
+                                                <div class="column is-auto">
+                                                    <input class="input is-half" type="tel" placeholder="Название мерроприятия">
+                                                </div>
+                                            </div>
+                                            <div class="columns is-gapless is-multiline is-mobile" style="margin-right: 10%;">
+            
+                                                <div class="column is-narrow">
+                                                    <label class="label" style="margin-top: 5px;">Соц.сети:&nbsp;&nbsp;</label>
+                                                </div>
+                                                <div class="column is-auto">
+                                                    <input class="input" type="text" placeholder="Название мерроприятия">
+                                                </div>
+                                            </div>
+                                           
+
+
+
+                                        </div>
+                                       
+                    
+                                    </div>
+                                    <div class="column is-auto ">
+                                       
+                    
+                                    </div>
+                                    
+                                </div>
+                                <div class="container" style=" padding-top: 30px; display: flex; align-items: center;  justify-content: center;">
+
+                                    <div class="button " style="background-color: #25c7d9; border-radius: 5px;color: white; margin-left: 10%; font-weight: normal ;">Сохранить</div>
+                                    <div class="button " style="background-color: #2373cc; border-radius: 5px;color: white;margin-left: 30px; font-weight: normal ;">Запросить подтверждение</div>
+
+                                </div>
+
+
+
+
+
+                                
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
 </body>
 
 </html>>
