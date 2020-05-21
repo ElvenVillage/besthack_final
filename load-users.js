@@ -1,17 +1,18 @@
 var listElm = document.getElementById('container');
 var users = [];
 
+var pos = 0;
 var loadFromApi = function(pos) {
     ///ТУ УТ УУ ТУ
-    return fetch('https://besthack.newpage.xyz/ajax_api/get_all_users.php')
+    return fetch('https://besthack.newpage.xyz/ajax_api/get_all_users.php?lid=' + pos)
 }
 
-var pos = 0;
 var loadMore = function() {
     loadFromApi(pos)
         .then(response => response.json())
         .then(user_ids => {
               for (let i = 0; i < user_ids.length; i++) {
+                pos++;
                 fetch('https://besthack.newpage.xyz/ajax_api/user_info.php?id='+user_ids[i])
                     .then(res => 
                       res.json()

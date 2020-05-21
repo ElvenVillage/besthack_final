@@ -297,6 +297,7 @@ loadDialogs();
 initUi();
 
 
-let timer = setInterval(() => {
+/*let timer = setInterval(() => {
     loadMessages(false);
 }, 1000);
+*/
