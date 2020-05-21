@@ -1,0 +1,22 @@
+[ {
+    avatar: "avatar.png",
+    username: "крокодильчик",
+    text: "пофиксите землю я сойду",
+    status: "норм"
+}, {
+    avatar: "avatar.png",
+    username: "свинка",
+    text: "пофиксите землю я сойду",
+    status: "норм"
+},{
+    avatar: "avatar.png",
+    username: "слоник",
+    text: "пофиксите землю я сойду",
+    status: "норм"
+},{
+    avatar: "avatar.png",
+    username: "жирафик",
+    text: "пофиксите землю я сойду",
+    status: "норм"
+}
+]
