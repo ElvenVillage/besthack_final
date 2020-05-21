@@ -19,7 +19,7 @@ function more(problems) {
                 var imgFigure = document.createElement('figure');
                 imgFigure.className = "image is-64x64";
                 var img = document.createElement('img');
-                img.src = user.image;
+                img.src = 'https://besthack.newpage.xyz/img/user_icon/' + user.image;
                 img.className = 'is-rounded';
                 imgFigure.appendChild(img);
 
