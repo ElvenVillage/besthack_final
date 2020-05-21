@@ -6,166 +6,313 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>T-Support</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' type='text/css' href='style/index.css'>
+    <script src="bachground.js"></script>
+
+    <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css" />
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="vendor/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
+    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+
+    <!-- THEME STYLES -->
+    <link href="css/layout.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Favicon -->
+
 </head>
 
-<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-
-            // Get all "navbar-burger" elements
-            const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
-
-            // Check if there are any navbar burgers
-            if ($navbarBurgers.length > 0) {
-
-                // Add a click event on each of them
-                $navbarBurgers.forEach(el => {
-                    el.addEventListener('click', () => {
-
-                        // Get the target from the "data-target" attribute
-                        const target = el.dataset.target;
-                        const $target = document.getElementById(target);
-
-                        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-                        el.classList.toggle('is-active');
-                        $target.classList.toggle('is-active');
-
-                    });
-                });
-            }
-
-        });
-    </script>
-
-    <div class="navbar-brand">
-        <a class="navbar-item" href="besthack.newpage.xyz">
-            <img src="https://static.tildacdn.com/tild6466-6365-4164-b137-336431383231/noroot.png" width="128" height="128">
-        </a>
-
-        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-        </a>
-    </div>
-
-    <div id="navbarBasicExample" class="navbar-menu">
-        <div class="navbar-start">
-            <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link is-arrowless is-arrowless">
-                Мероприятия
-            </a>
-
-                <div class="navbar-dropdown">
-                    <a class="navbar-item">
-                    Мероприятия раз
-                </a>
-                    <a class="navbar-item">
-                    Мероприятия два
-                </a>
-                    <a class="navbar-item">
-                    Мероприятия три
-                </a>
-                </div>
-            </div>
-
-            <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link is-arrowless">
-                Участникам
-            </a>
-
-                <div class="navbar-dropdown">
-                    <a class="navbar-item">
-                    Участникам раз
-                </a>
-                    <a class="navbar-item">
-                    Участникам два
-                </a>
-                    <a class="navbar-item">
-                    Участникам три
-                </a>
-                    <a class="navbar-item">
-                    участникам четыре
-                </a>
-                </div>
-            </div>
-
-            <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link is-arrowless">
-                Партнерам
-            </a>
-
-                <div class="navbar-dropdown">
-                    <a class="navbar-item">
-                    Партнерам раз
-                </a>
-                    <a class="navbar-item">
-                    два
-                </a>
-                    <a class="navbar-item">
-                    три
-                </a>
-                </div>
-            </div>
-            <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link is-arrowless">
-                О нас
-            </a>
-
-                <div class="navbar-dropdown">
-                    <a class="navbar-item">
-                    О нас раз
-                </a>
-                    <a class="navbar-item">
-                    О нас два
-                </a>
-                    <a class="navbar-item">
-                    О нас три
-                </a>
-                </div>
-            </div>
-            <a class="navbar-item">
-            Контакты
-        </a>
-        </div>
-
-        <div class="navbar-end ">
-            <a class="navbar-item">
-            Личный кабинет
-             </a>
-
-            <div class="navbar-item   has-dropdown is-hoverable">
-                <a class="navbar-link is-arrowless">
-                    <figure class="image is-64x64">
-                        <img src="user.jpg" class="is-rounded">
-                    </figure>
-                </a>
-
-                <div class="navbar-dropdown is-right">
-                    <a class="navbar-item">
-                    Мой профиль
-                </a>
-                    <a class="navbar-item">
-                    Мои сообщения
-                </a>
-                    <a class="navbar-item">
-                    Мои мероприятия
-                </a>
-                </div>
-            </div>
-
-
-
-        </div>
-    </div>
-    </div>
-</nav>
-
-
-
-
 <body>
+
+    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+
+                // Get all "navbar-burger" elements
+                const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+                // Check if there are any navbar burgers
+                if ($navbarBurgers.length > 0) {
+
+                    // Add a click event on each of them
+                    $navbarBurgers.forEach(el => {
+                        el.addEventListener('click', () => {
+
+                            // Get the target from the "data-target" attribute
+                            const target = el.dataset.target;
+                            const $target = document.getElementById(target);
+
+                            // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+                            el.classList.toggle('is-active');
+                            $target.classList.toggle('is-active');
+
+                        });
+                    });
+                }
+
+            });
+        </script>
+
+        <div class="navbar-brand">
+            <a class="navbar-item" href="besthack.newpage.xyz">
+                <img src="https://github.com/ElvenVillage/besthack_final/blob/master/img/logo.png?raw=true" width="128" height="128">
+            </a>
+
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-end">
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link is-arrowless is-arrowless">
+                        <b>Все продукты</b>
+                    </a>
+
+
+                </div>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link is-arrowless">
+                    Тех поддрежка
+                </a>
+
+
+                </div>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link is-arrowless">
+                    Авторизация
+                </a>
+
+
+                </div>
+                <div class="navbar-item "></div>
+            </div>
+
+
+        </div>
+    </nav>
+    <section class="hero is-fullheight-with-navbar has-bg-img">
+        <img src="back.jpg" class="is-back">
+        <div class="hero-body">
+            <div class="container " style="text-align: center; ">
+                <h1 class="col-sm-6 col-sm-offset-3" style="color: white;">ПОМОЩЬ СОТРУДНИКАМ<br> ВСЕГДА НА СВЯЗИ
+
+                </h1>
+
+
+            </div>
+        </div>
+    </section>
+    <section class="container">
+        <div id="products">
+            <div class="container content-lg">
+                <div class="row text-center margin-b-40">
+                    <div class="col-sm-6 col-sm-offset-3">
+                        <h2>Latest Products</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incididunt ut laboret dolore magna aliqua enim minim veniam exercitation</p>
+                    </div>
+                </div>
+                <!--// end row -->
+
+                <div class="row ">
+                    <!-- Latest Products -->
+                    <div class="col-sm-4 sm-margin-b-50">
+                        <div class="margin-b-20">
+                            <img class="img-responsive wow fadeIn" src="img/970x647/01.jpg" alt="Latest Products Image" data-wow-duration=".3" data-wow-delay=".1s">
+                        </div>
+                        <h4><a href="#">Workspace</a> <span class="text-uppercase margin-l-20">Management</span></h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut consequat siad esqudiat dolor</p>
+                        <a class="link" href="#">Read More</a>
+                    </div>
+                    <!-- End Latest Products -->
+
+                    <!-- Latest Products -->
+                    <div class="col-sm-4 sm-margin-b-50">
+                        <div class="margin-b-20">
+                            <img class="img-responsive wow fadeIn" src="img/970x647/02.jpg" alt="Latest Products Image" data-wow-duration=".3" data-wow-delay=".2s">
+                        </div>
+                        <h4><a href="#">Minimalism</a> <span class="text-uppercase margin-l-20">Developmeny</span></h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut consequat siad esqudiat dolor</p>
+                        <a class="link" href="#">Read More</a>
+                    </div>
+                    <!-- End Latest Products -->
+
+                    <!-- Latest Products -->
+                    <div class="col-sm-4 sm-margin-b-50">
+                        <div class="margin-b-20">
+                            <img class="img-responsive wow fadeIn" src="img/970x647/03.jpg" alt="Latest Products Image" data-wow-duration=".3" data-wow-delay=".3s">
+                        </div>
+                        <h4><a href="#">Cleant Style</a> <span class="text-uppercase margin-l-20">Design</span></h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut consequat siad esqudiat dolor</p>
+                        <a class="link" href="#">Read More</a>
+                    </div>
+                    <!-- End Latest Products -->
+                </div>
+                <!--// end row -->
+
+                <div class="row " style="padding-top: 50px;">
+                    <!-- Latest Products -->
+                    <div class="col-sm-4 sm-margin-b-50">
+                        <div class="margin-b-20">
+                            <img class="img-responsive wow fadeIn" src="img/970x647/01.jpg" alt="Latest Products Image" data-wow-duration=".3" data-wow-delay=".1s">
+                        </div>
+                        <h4><a href="#">Workspace</a> <span class="text-uppercase margin-l-20">Management</span></h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut consequat siad esqudiat dolor</p>
+                        <a class="link" href="#">Read More</a>
+                    </div>
+                    <!-- End Latest Products -->
+
+                    <!-- Latest Products -->
+                    <div class="col-sm-4 sm-margin-b-50">
+                        <div class="margin-b-20">
+                            <img class="img-responsive wow fadeIn" src="img/970x647/02.jpg" alt="Latest Products Image" data-wow-duration=".3" data-wow-delay=".2s">
+                        </div>
+                        <h4><a href="#">Minimalism</a> <span class="text-uppercase margin-l-20">Developmeny</span></h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut consequat siad esqudiat dolor</p>
+                        <a class="link" href="#">Read More</a>
+                    </div>
+                    <!-- End Latest Products -->
+
+                    <!-- Latest Products -->
+                    <div class="col-sm-4 sm-margin-b-50">
+                        <div class="margin-b-20">
+                            <img class="img-responsive wow fadeIn" src="img/970x647/03.jpg" alt="Latest Products Image" data-wow-duration=".3" data-wow-delay=".3s">
+                        </div>
+                        <h4><a href="#">Cleant Style</a> <span class="text-uppercase margin-l-20">Design</span></h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut consequat siad esqudiat dolor</p>
+                        <a class="link" href="#">Read More</a>
+                    </div>
+                    <!-- End Latest Products -->
+                </div>
+                <!--// end row -->
+
+                <div class="row " id="con_hide1" style="padding-top: 50px;">
+                    <!-- Latest Products -->
+                    <div class="col-sm-4 sm-margin-b-50">
+                        <div class="margin-b-20">
+                            <img class="img-responsive wow fadeIn" src="img/970x647/01.jpg" alt="Latest Products Image" data-wow-duration=".3" data-wow-delay=".1s">
+                        </div>
+                        <h4><a href="#">Workspace</a> <span class="text-uppercase margin-l-20">Management</span></h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut consequat siad esqudiat dolor</p>
+                        <a class="link" href="#">Read More</a>
+                    </div>
+                    <!-- End Latest Products -->
+
+                    <!-- Latest Products -->
+                    <div class="col-sm-4 sm-margin-b-50">
+                        <div class="margin-b-20">
+                            <img class="img-responsive wow fadeIn" src="img/970x647/02.jpg" alt="Latest Products Image" data-wow-duration=".3" data-wow-delay=".2s">
+                        </div>
+                        <h4><a href="#">Minimalism</a> <span class="text-uppercase margin-l-20">Developmeny</span></h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut consequat siad esqudiat dolor</p>
+                        <a class="link" href="#">Read More</a>
+                    </div>
+                    <!-- End Latest Products -->
+
+                    <!-- Latest Products -->
+                    <div class="col-sm-4 sm-margin-b-50">
+                        <div class="margin-b-20">
+                            <img class="img-responsive wow fadeIn" src="img/970x647/03.jpg" alt="Latest Products Image" data-wow-duration=".3" data-wow-delay=".3s">
+                        </div>
+                        <h4><a href="#">Cleant Style</a> <span class="text-uppercase margin-l-20">Design</span></h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut consequat siad esqudiat dolor</p>
+                        <a class="link" href="#">Read More</a>
+                    </div>
+                    <!-- End Latest Products -->
+                </div>
+                <!--// end row -->
+                <div class="row " id="con_hide" style="padding-top: 50px;">
+                    <!-- Latest Products -->
+                    <div class="col-sm-4 sm-margin-b-50">
+                        <div class="margin-b-20">
+                            <img class="img-responsive wow fadeIn" src="img/970x647/01.jpg" alt="Latest Products Image" data-wow-duration=".3" data-wow-delay=".1s">
+                        </div>
+                        <h4><a href="#">Workspace</a> <span class="text-uppercase margin-l-20">Management</span></h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut consequat siad esqudiat dolor</p>
+                        <a class="link" href="#">Read More</a>
+                    </div>
+                    <!-- End Latest Products -->
+
+                    <!-- Latest Products -->
+                    <div class="col-sm-4 sm-margin-b-50">
+                        <div class="margin-b-20">
+                            <img class="img-responsive wow fadeIn" src="img/970x647/02.jpg" alt="Latest Products Image" data-wow-duration=".3" data-wow-delay=".2s">
+                        </div>
+                        <h4><a href="#">Minimalism</a> <span class="text-uppercase margin-l-20">Developmeny</span></h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut consequat siad esqudiat dolor</p>
+                        <a class="link" href="#">Read More</a>
+                    </div>
+                    <!-- End Latest Products -->
+
+                    <!-- Latest Products -->
+                    <div class="col-sm-4 sm-margin-b-50">
+                        <div class="margin-b-20">
+                            <img class="img-responsive wow fadeIn" src="img/970x647/03.jpg" alt="Latest Products Image" data-wow-duration=".3" data-wow-delay=".3s">
+                        </div>
+                        <h4><a href="#">Cleant Style</a> <span class="text-uppercase margin-l-20">Design</span></h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut consequat siad esqudiat dolor</p>
+                        <a class="link" href="#">Read More</a>
+                    </div>
+                    <!-- End Latest Products -->
+                </div>
+                <!--// end row -->
+
+
+                <div class="container" id="btn_hide" style=" padding-top: 2%; display: flex; align-items: center;  justify-content: center;">
+                    <div class="btn btn-info btn-flat">Спрятать</button>
+                    </div>
+                </div>
+                <div class="container" id="btn_show" style=" padding-top: 2%; display: flex; align-items: center;  justify-content: center;">
+                    <div class="btn btn-info btn-flat">Показать еще...</button>
+                    </div>
+                </div>
+                <script>
+                    con_hide.style.display = "none";
+                    con_hide1.style.display = "none";
+
+                    btn_hide.style.display = "none";
+
+                    btn_show.onclick = function() {
+                        btn_show.style.display = "none";
+                        con_hide.style.display = "flex";
+                        con_hide1.style.display = "flex";
+
+                        btn_hide.style.display = "flex";
+
+                    }
+
+                    btn_hide.onclick = function() {
+                        con_hide.style.display = "none";
+                        con_hide1.style.display = "none";
+
+                        btn_show.style.display = "flex";
+                        btn_hide.style.display = "none";
+
+                    }
+                </script>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+    <footer>
+        <hr>
+        <p>Developed by &#171;NewPage1 &#187; &copy;2020</p>
+    </footer>
 </body>
 
-</html>>
+</html>
