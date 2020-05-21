@@ -29,11 +29,13 @@ var loadMore = function() {
            var profileDiv = document.createElement('div');
             profileDiv.className = 'column is-3';
             var profileLink = document.createElement('a');
+            profileLink.style.color = 'black';
             profileLink.href = '#';
             profileLink.innerText = 'Профиль'
             var chatDiv = document.createElement('div');
             chatDiv.className = 'column is-3';
             var chatLink = document.createElement('a');
+            chatLink.style.color = 'black'
             chatLink.href = '#';
             chatLink.innerText = 'Чат'
             chatDiv.appendChild(chatLink);
