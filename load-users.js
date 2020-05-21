@@ -25,6 +25,7 @@ var loadMore = function() {
                       imgFigure.className = 'image is-64x64';
                       imgFigure.style.paddingLeft = "20px";
                       var img = document.createElement('img');
+                      img.style.style = "padding-left:40px";
                       img.className = 'is-rounded';
                       img.src = 'https://besthack.newpage.xyz/img/user_icon/' + response.image;
                       imgFigure.appendChild(img);
