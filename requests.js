@@ -14,7 +14,7 @@ function more(problems) {
                 div.className = 'columns';
 
                 var profile = document.createElement('div');
-                profile.className = 'column columns is-5';
+                profile.className = 'column columns is-3';
 
                 var imgFigure = document.createElement('figure');
                 imgFigure.className = "image is-64x64";
@@ -36,7 +36,7 @@ function more(problems) {
                 profile.appendChild(username);
 
                 textProblem = document.createElement('div');
-                textProblem.className = 'column is-5';
+                textProblem.className = 'column is-8';
                 textProblemSpan = document.createElement('span');
                 textProblemSpan.style.fontWeight = 'bold';
                 textProblemSpan.innerText = problem.subject + ':\n';
