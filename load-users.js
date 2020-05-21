@@ -13,7 +13,9 @@ var loadMore = function() {
         .then(user_ids => {
               for (let i = 0; i < user_ids.length; i++) {
                 fetch('https://besthack.newpage.xyz/ajax_api/user_info.php?id='+user_ids[i])
-                    .then(response => response.json())
+                    .then(res => 
+                      res.json()
+                    )
                     .then(response => {
                       var div = document.createElement('div');
                       div.className = 'columns';
@@ -23,7 +25,7 @@ var loadMore = function() {
                       imgFigure.className = 'image is-64x64';
                       var img = document.createElement('img');
                       img.className = 'is-rounded';
-                      img.src = response.image;
+                      img.src = 'https://besthack.newpage.xyz/img/user_icon/' + response.image;
                       imgFigure.appendChild(img);
                       div1.appendChild(imgFigure);
                       var div2 = document.createElement('div');
