@@ -14,7 +14,7 @@ function more(problems) {
                 div.className = 'columns';
 
                 var profile = document.createElement('div');
-                profile.className = 'column columns';
+                profile.className = 'column columns is-5';
 
                 var imgFigure = document.createElement('figure');
                 imgFigure.className = "image is-64x64";
@@ -24,20 +24,38 @@ function more(problems) {
                 imgFigure.appendChild(img);
 
                 var username = document.createElement('div');
-                username.innerText = user.name + ' ' + user.surname + '\n' + problem["create_date"];
+                username.style.paddingTop = '20px';
+                var userSpan = document.createElement('span');
+                userSpan.innerText = user.name + ' ' + user.surname + '\n';
+                userSpan.style.fontWeight = 'bold';
+                username.appendChild(userSpan);
+                username.innerHTML += problem["create_date"];
                 username.className = 'column';
     
                 username.appendChild(imgFigure);
                 profile.appendChild(username);
 
                 textProblem = document.createElement('div');
-                textProblem.className = 'column';
-                textProblem.innerText = problem.subject + ':\n' + problem.data;
+                textProblem.className = 'column is-5';
+                textProblemSpan = document.createElement('span');
+                textProblemSpan.style.fontWeight = 'bold';
+                textProblemSpan.innerText = problem.subject + ':\n';
                 textProblem.style = 'padding-top: 20px'
+                textProblem.appendChild(textProblemSpan);
+                textProblem.innerHTML +=  problem.data;
 
                 statusProblem = document.createElement('div');
                 statusProblem.className = 'column';
-                statusProblem.innerText = problem.status;
+                statusFigure = document.createElement('figure');
+                statusFigure.className = "image is-64x64";
+                statusImg = document.createElement('img');
+                if (problem.status == 0) {
+                    statusImg.src = "g.png";
+                } else {
+                    statusImg.src = "kr.png";
+                }
+                statusFigure.appendChild(statusImg);
+                statusProblem.appendChild(statusFigure);
                 statusProblem.style = 'padding-top: 20px';
 
                 div.appendChild(profile); div.appendChild(textProblem); div.appendChild(statusProblem);
