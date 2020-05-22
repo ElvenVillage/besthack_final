@@ -51,7 +51,7 @@ function more(problem, problemId) {
                 statusProblem = document.createElement('div');
                 statusProblem.className = 'column';
                 linkToChat = document.createElement('a');
-                linkToChat.href = 'https://besthack.newpage.xyz/test/chat.html?id=0' + problemId;
+                linkToChat.href = './chat.html?id=0' + problemId;
                 statusFigure = document.createElement('figure');
                 statusFigure.className = "image is-64x64";
                 statusImg = document.createElement('img');

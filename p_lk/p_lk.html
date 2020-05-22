@@ -92,7 +92,7 @@
                                     <div class="column is-narrow ">
                                         <input class="file-input is-rounded " type="file " id="upload_file " name="upload_file[] " multiple=" " accept="image/jpeg,image/png,image/gif " />
         
-                                        <img class=" image " src=" https://sun9-29.userapi.com/c206624/v206624214/12aa23/66tTmKYxzSA.jpg " style="width: 15hw; height: 50vh; " >
+                                        <img class=" image " id="photo" src=" https://sun9-29.userapi.com/c206624/v206624214/12aa23/66tTmKYxzSA.jpg " style="width: 15hw; height: 50vh; " >
         
         
                                         <div id="image_preview " class="upload_preview "></div>
@@ -125,7 +125,7 @@
                                         <label class="label " style="margin-top: 5px;color: black; font-weight: normal ; ">&nbsp;&nbsp;&nbsp;Имя:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                     </div>
                                     <div class="column is-narrow ">
-                                        <input class="input is-half " type="text " placeholder="Имя " readonly style="width: 100%; ">
+                                        <input class="input is-half " type="text " id="name" placeholder="Имя " readonly style="width: 100%; ">
                                     </div>
                             </div>
                             <div class="columns is-gapless is-multiline is-mobile " style="color: black; ">
@@ -134,7 +134,7 @@
                                         <label class="label " style="margin-top: 5px; font-weight: normal ;color: black; ">Фамилия:&nbsp;&nbsp;</label>
                                     </div>
                                     <div class="column is-narrow ">
-                                        <input class="input " type="text " placeholder="Фамилия " readonly>
+                                        <input class="input " type="text " id="surname" placeholder="Фамилия " readonly>
                                     </div>
                             </div>
                             <div class="columns is-gapless is-multiline is-mobile " style="color: black; ">
@@ -143,7 +143,7 @@
                                     <label class="label " style="margin-top: 5px; font-weight: normal ;color: black; ">Отчество:&nbsp;&nbsp;</label>
                                 </div>
                                 <div class="column is-narrow ">
-                                    <input class="input " type="text " placeholder="Отчество " readonly>
+                                    <input class="input " type="text " id="patron" placeholder="Отчество " readonly>
                                 </div>
 
                             </div>
@@ -175,7 +175,7 @@
                                     <label class="label " type="tel " style="margin-top: 5px; font-weight: normal ;color: black; ">Телефон:&nbsp;&nbsp;</label>
                                 </div>
                                 <div class="column is-narrow ">
-                                    <input class="input " type="text " placeholder="Телефон " readonly>
+                                    <input class="input " type="text " id="phone" placeholder="Телефон " readonly>
                                 </div>
 
                             </div>
@@ -185,7 +185,7 @@
                                     <label class="label " style="margin-top: 5px; font-weight: normal ;color: black; ">Соцсети:&nbsp;&nbsp;</label>
                                 </div>
                                 <div class="column is-narrow ">
-                                    <input class="input " type="text " placeholder="Соцсети " readonly>
+                                    <input class="input " type="text " id="soc" placeholder="Соцсети " readonly>
                                 </div>
 
                             </div>
@@ -205,7 +205,7 @@
                 <h2 class="is-size-4 " style="margin-bottom: 10px; margin-left: -2vh; color: black; margin-top: 1vh; "><b>Заявки:&nbsp;&nbsp;</h2>
                 </div>
             <div class="column ">
-                <div class="button is-size-4 "  style="background-color: #25c7d9; border-radius: 5px;color: white; font-weight: normal ; ">Смотреть</div>
+                <div class="button is-size-4 "  style="background-color: #25c7d9; border-radius: 5px;color: white; font-weight: normal ; " id="asd">Смотреть</div>
             </div>
            
 
@@ -258,6 +258,6 @@
         
             </section>
 
-
+<script src="./p_lk.js"></script>
 </body>
 </html>

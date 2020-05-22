@@ -283,6 +283,16 @@ function initUi() {
             textarea.value = '';
         });
     })
+    fetch('https://besthack.newpage.xyz/ajax_api/full_user_info.php?id=2')
+        .then(res => res.json())
+        .catch(() => { //ЗАМЕНИТЬ НА CATСH
+             //нам не дали значит не админ
+             document.getElementById('status').style = 'display:inline'
+             document.getElementById('status').addEventListener('click', () => {
+                 fetch('https://besthack.newpage.xyz/ajax_api/change_status.php?id=' + currentChatId)
+                     .then(alert('Закрыто'))
+             })
+        })
 }
 
 

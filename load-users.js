@@ -40,13 +40,13 @@ var loadMore = function() {
                       profileDiv.className = 'column is-1';
                       var profileLink = document.createElement('a');
                       profileLink.style.color = 'black';
-                      profileLink.href = '#';
+                      profileLink.href = './p_lk.html?' + user_ids[i];
                       profileLink.innerText = 'Профиль'
                       var chatDiv = document.createElement('div');
                       chatDiv.className = 'column is-1';
                       var chatLink = document.createElement('a');
                       chatLink.style.color = 'black'
-                      chatLink.href = 'https://besthack.newpage.xyz/test/admin_chat.html';
+                      chatLink.href = './admin_chat.html';
                       chatLink.innerText = 'Чат'
                       chatDiv.appendChild(chatLink);
                       profileDiv.appendChild(profileLink);
