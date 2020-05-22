@@ -12,13 +12,7 @@ img.is-back {
 }
 
 .header_logo {
-    margin: -10px;
-    flex: 0 0 70px;
     overflow: hidden;
-}
-
-.header_logo img {
-    width: 200%;
 }
 
 .button:hover {
