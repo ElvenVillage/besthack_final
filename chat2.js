@@ -45,7 +45,7 @@ function push_message(c, text, fun) {
 
 function get_messages(c, fun, last = false) {
     if (last) {
-        ajax("https://besthack.newpage.xyz/ajax_api/get_messages.php?id=" + c + "&lid=" + last, fun);
+        ajax("https://besthack.newpage.xyz/ajax_api/get_messages.php?id=" + c + "&last=" + last, fun);
     } else {
         ajax("https://besthack.newpage.xyz/ajax_api/get_messages.php?id=" + c, fun);
     }
@@ -82,51 +82,71 @@ class User {
 }
 
 let users = [];
+let gliders = 0;
+
+function appendToSlider(user) {
+    if (gliders >= users.length) return;
+    gliders++;
+    const pers = document.createElement('div');
+    pers.className = 'column';
+    const persfig = document.createElement('figure');
+    persfig.className = 'image is-64x64';
+    const image = document.createElement('img');
+    image.src = user.avatar;
+    image.className = 'is-rounded';
+    persfig.append(image);
+    pers.append(persfig);
+    document.getElementById('glider').append(pers);
+    /*if (gliders === users.length) {
+        new Glider(document.querySelector('.glider'), {
+            slidesToShow: 15,
+            draggable: true,
+            dots: "#dots ",
+            arrows: {
+                prev: ".glider-prev ",
+                next: ".glider-next "
+            }
+        });
+
+     */
+}
 
 class RecyclerView {
 
     createNewDivs(maxMessages) {
         for (let i = 0; i < maxMessages; i++) {
-            const delimiter = document.createElement('div');
-            const username = document.createElement('b');
-            delimiter.append(username);
             const div = document.createElement('div');
             div.className = 'columns';
 
             const firstColumn = document.createElement('div');
-            firstColumn.className = 'column is-4 columns';
-            const firstSubColumn = document.createElement('div');
-            firstSubColumn.className = 'column is-6';
+            firstColumn.className = 'column is-one-fifth';
             const figure = document.createElement('figure');
             figure.className = 'image is-64x64'
             const avatar = document.createElement('img');
             figure.append(avatar);
             avatar.className = 'is-rounded';
-            
-            const timestamp = document.createElement('div');
-            timestamp.className = 'column';
-            timestamp.style = "padding-top:15px"
-            //firstSubColumn.append(username);
-            firstSubColumn.append(figure);
-            firstColumn.append(firstSubColumn);
-            firstColumn.append(timestamp);
+            firstColumn.append(figure);
+
+            const secondColumn = document.createElement('div');
+            secondColumn.className = 'column';
+            const username = document.createElement('p');
+            secondColumn.append(username);
 
             const thirdColumn = document.createElement('div');
             thirdColumn.className = 'column';
-            const text = document.createElement('div');
+            const text = document.createElement('p');
             thirdColumn.append(text);
 
             this.divs.push(div);
             this.avatars.push(avatar);
             this.texts.push(text);
             this.usernames.push(username);
-            this.timestamps.push(timestamp);
 
             div.append(firstColumn);
+            div.append(secondColumn);
             div.append(thirdColumn);
 
             this.container.prepend(div);
-            this.container.prepend(delimiter);
         }
     }
 
@@ -140,7 +160,6 @@ class RecyclerView {
         this.usernames = [];
         this.avatars = [];
         this.texts = [];
-        this.timestamps = [];
 
         this.createNewDivs(maxMessages);
     }
@@ -165,19 +184,27 @@ class RecyclerView {
                     users[index] = user;
                     this.avatars[this.pos + i].src = userdata['image'];
                     this.texts[this.pos + i].innerText = this.messages[this.pos + i].text;
-                    this.usernames[this.pos + i].innerText = userdata.name;
-                    this.timestamps[this.pos + i].innerText = this.messages[this.pos + i].timestamp;
-                })
+                    this.usernames[this.pos + i].innerText = userdata.name + this.messages[this.pos + i].timestamp;
+                    appendToSlider(user)
+                });
             } else {
                 this.avatars[this.pos + i].src = users[index].avatar;
                 this.texts[this.pos + i].innerText = this.messages[this.pos + i].text;
-                this.usernames[this.pos + i].innerText = owner.name;
-                this.timestamps[this.pos + i].innerText = this.messages[this.pos + i].timestamp;
+                this.usernames[this.pos + i].innerText = owner.name + this.messages[this.pos + i].timestamp;
             }
         }
     }
 
 
+    append(message) {
+        this.messages.push(message);
+    }
+
+    shift(message) {
+        this.messages.unshift(message);
+        //this.pos = 0;
+        //this.render();
+    }
 
     init() {
         this.container.addEventListener('click', () => {
@@ -205,8 +232,7 @@ function loadUsers() {
 
 function loadDialogs() {
     currentChatId = 20;
-    loadUsers();
-
+    loadMessages();
 }
 
 
@@ -218,7 +244,7 @@ function loadMoreMessages(pos) {
         res = JSON.parse(res);
         res.forEach(msg => {
             const message = new Message(msg[1], msg[3], msg[2]);
-            myRecyclerView.unshift(message);
+            myRecyclerView.shift(message);
         });
 
         myRecyclerView.createNewDivs(myRecyclerView.maxMessages);
@@ -232,7 +258,7 @@ function loadMessages(render = true) {
         res = JSON.parse(res);
         myRecyclerView.messages = [];
         res.forEach(msg => {
-            const message = new Message(msg["owner_id"], msg.data, msg.date);
+            const message = new Message(msg[1], msg[3], msg[2]);
             myRecyclerView.messages.unshift(message);
         });
         if (render) {
@@ -266,8 +292,6 @@ function initUi() {
 }
 
 
-//loadTestUsers();
-//loadTestMessages();
 loadDialogs();
 initUi();
 
