@@ -174,13 +174,13 @@ class RecyclerView {
                     userdata = JSON.parse(userdata);
                     const user = new User(ownerId, userdata.name, userdata.surname, userdata.image);
                     users[index] = user;
-                    this.avatars[this.pos + i].src = userdata['image'];
+                    this.avatars[this.pos + i].src = 'https://besthack.newpage.xyz/img/user_icon/' + userdata['image'];
                     this.texts[this.pos + i].innerText = this.messages[this.pos + i].text;
                     this.usernames[this.pos + i].innerText = userdata.name;
                     this.timestamps[this.pos + i].innerText = this.messages[this.pos + i].timestamp;
                 })
             } else {
-                this.avatars[this.pos + i].src = users[index].avatar;
+                this.avatars[this.pos + i].src = 'https://besthack.newpage.xyz/img/user_icon/' + users[index].avatar;
                 this.texts[this.pos + i].innerText = this.messages[this.pos + i].text;
                 this.usernames[this.pos + i].innerText = owner.name;
                 this.timestamps[this.pos + i].innerText = this.messages[this.pos + i].timestamp;
@@ -192,12 +192,9 @@ class RecyclerView {
 
     init() {
         this.container.addEventListener('click', () => {
-            //const currentScroll = this.container.scrollTop;
-            //if (currentScroll < 10) {
             this.pos += this.maxMessages - 1;
             loadMoreMessages(this.pos);
             return;
-            // }
         });
     }
 }
@@ -289,8 +286,6 @@ function initUi() {
 }
 
 
-//loadTestUsers();
-//loadTestMessages();
 loadDialogs();
 initUi();
 

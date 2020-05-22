@@ -4,6 +4,16 @@ let currentChatId = -1;
 
 let latestTimestamp = Date.parse('March 7, 2014');
 
+function lastSeenedId(messages) {
+    let maxi = 30000;
+    for (let i = 0; i < messages.length; i++) {
+        if (parseInt(messages[i].id) < maxi) {
+            maxi = parseInt(messages[i].id);
+        }
+    }
+    return maxi;
+}
+
 //Функция дял ajax-get запросов, вводится адрес и функция для возврата(необязательно);
 function ajax(url, fun = false) {
     var xmlhttp = new XMLHttpRequest();
@@ -40,14 +50,14 @@ function get_users(c, fun) {
 }
 
 function push_message(c, text, fun) {
-    ajax("https://besthack.newpage.xyz/ajax_api/add__message.php?id=" + c + "&text=" + text, fun);
+    ajax("https://besthack.newpage.xyz/ajax_api/add__message_admin.php" + "?text=" + text, fun);
 }
 
 function get_messages(c, fun, last = false) {
     if (last) {
-        ajax("https://besthack.newpage.xyz/ajax_api/get_messages.php?id=" + c + "&last=" + last, fun);
+        ajax("https://besthack.newpage.xyz/ajax_api/get_messages_admin.php", fun);
     } else {
-        ajax("https://besthack.newpage.xyz/ajax_api/get_messages.php?id=" + c, fun);
+        ajax("https://besthack.newpage.xyz/ajax_api/get_messages_admin.php", fun);
     }
 }
 
@@ -65,10 +75,11 @@ function user_info_quick(uid, fun) {
 
 
 class Message {
-    constructor(owner, text, timestamp) {
+    constructor(owner, text, timestamp, id) {
         this.owner = owner;
         this.text = text;
         this.timestamp = timestamp;
+        this.id = id;
     }
 }
 
@@ -82,71 +93,51 @@ class User {
 }
 
 let users = [];
-let gliders = 0;
-
-function appendToSlider(user) {
-    if (gliders >= users.length) return;
-    gliders++;
-    const pers = document.createElement('div');
-    pers.className = 'column';
-    const persfig = document.createElement('figure');
-    persfig.className = 'image is-64x64';
-    const image = document.createElement('img');
-    image.src = user.avatar;
-    image.className = 'is-rounded';
-    persfig.append(image);
-    pers.append(persfig);
-    document.getElementById('glider').append(pers);
-    /*if (gliders === users.length) {
-        new Glider(document.querySelector('.glider'), {
-            slidesToShow: 15,
-            draggable: true,
-            dots: "#dots ",
-            arrows: {
-                prev: ".glider-prev ",
-                next: ".glider-next "
-            }
-        });
-
-     */
-}
 
 class RecyclerView {
 
     createNewDivs(maxMessages) {
         for (let i = 0; i < maxMessages; i++) {
+            const delimiter = document.createElement('div');
+            const username = document.createElement('b');
+            delimiter.append(username);
             const div = document.createElement('div');
             div.className = 'columns';
 
             const firstColumn = document.createElement('div');
-            firstColumn.className = 'column is-one-fifth';
+            firstColumn.className = 'column is-4 columns';
+            const firstSubColumn = document.createElement('div');
+            firstSubColumn.className = 'column is-6';
             const figure = document.createElement('figure');
             figure.className = 'image is-64x64'
             const avatar = document.createElement('img');
             figure.append(avatar);
             avatar.className = 'is-rounded';
-            firstColumn.append(figure);
-
-            const secondColumn = document.createElement('div');
-            secondColumn.className = 'column';
-            const username = document.createElement('p');
-            secondColumn.append(username);
+            
+            const timestamp = document.createElement('div');
+            timestamp.className = 'column';
+            timestamp.style = "padding-top:15px"
+            //firstSubColumn.append(username);
+            firstSubColumn.append(figure);
+            firstColumn.append(firstSubColumn);
+            firstColumn.append(timestamp);
 
             const thirdColumn = document.createElement('div');
             thirdColumn.className = 'column';
-            const text = document.createElement('p');
+            const text = document.createElement('div');
             thirdColumn.append(text);
 
             this.divs.push(div);
             this.avatars.push(avatar);
             this.texts.push(text);
             this.usernames.push(username);
+            this.timestamps.push(timestamp);
 
             div.append(firstColumn);
-            div.append(secondColumn);
             div.append(thirdColumn);
 
             this.container.prepend(div);
+            this.container.prepend(delimiter);
         }
     }
 
@@ -160,13 +151,14 @@ class RecyclerView {
         this.usernames = [];
         this.avatars = [];
         this.texts = [];
+        this.timestamps = [];
 
         this.createNewDivs(maxMessages);
     }
 
 
     render() {
-        for (let i = 0; i < Math.min(this.maxMessages, this.messages.length); i++) {
+        for (let i = 0; i < Math.min(this.maxMessages-1, this.messages.length); i++) {
             const ownerId = this.messages[this.pos + i].owner;
             let owner = {};
             let index = 0;
@@ -182,38 +174,27 @@ class RecyclerView {
                     userdata = JSON.parse(userdata);
                     const user = new User(ownerId, userdata.name, userdata.surname, userdata.image);
                     users[index] = user;
-                    this.avatars[this.pos + i].src = userdata['image'];
+                    this.avatars[this.pos + i].src = 'https://besthack.newpage.xyz/img/user_icon/' + userdata['image'];
                     this.texts[this.pos + i].innerText = this.messages[this.pos + i].text;
-                    this.usernames[this.pos + i].innerText = userdata.name + this.messages[this.pos + i].timestamp;
-                    appendToSlider(user)
-                });
+                    this.usernames[this.pos + i].innerText = userdata.name;
+                    this.timestamps[this.pos + i].innerText = this.messages[this.pos + i].timestamp;
+                })
             } else {
-                this.avatars[this.pos + i].src = users[index].avatar;
+                this.avatars[this.pos + i].src = 'https://besthack.newpage.xyz/img/user_icon/' + users[index].avatar;
                 this.texts[this.pos + i].innerText = this.messages[this.pos + i].text;
-                this.usernames[this.pos + i].innerText = owner.name + this.messages[this.pos + i].timestamp;
+                this.usernames[this.pos + i].innerText = owner.name;
+                this.timestamps[this.pos + i].innerText = this.messages[this.pos + i].timestamp;
             }
         }
     }
 
 
-    append(message) {
-        this.messages.push(message);
-    }
-
-    shift(message) {
-        this.messages.unshift(message);
-        //this.pos = 0;
-        //this.render();
-    }
 
     init() {
         this.container.addEventListener('click', () => {
-            //const currentScroll = this.container.scrollTop;
-            //if (currentScroll < 10) {
-            this.pos += this.maxMessages;
+            this.pos += this.maxMessages - 1;
             loadMoreMessages(this.pos);
             return;
-            // }
         });
     }
 }
@@ -231,8 +212,10 @@ function loadUsers() {
 
 
 function loadDialogs() {
-    currentChatId = 20;
-    loadMessages();
+    currentChatId = window.location.href.slice(window.location.href.length-3, window.location.href.length);
+    if (currentChatId[0] == "0") currentChatId = currentChatId.slice(currentChatId.length-2,currentChatId.length);
+    loadUsers();
+
 }
 
 
@@ -243,14 +226,24 @@ function loadMoreMessages(pos) {
     get_messages(currentChatId, (res) => {
         res = JSON.parse(res);
         res.forEach(msg => {
-            const message = new Message(msg[1], msg[3], msg[2]);
-            myRecyclerView.shift(message);
+            const message = new Message(msg["owner_id"], msg.data, msg.date, msg.id);
+            if (!wasAlreadyTaken(myRecyclerView.messages, msg.id))
+                myRecyclerView.messages.unshift(message);
         });
 
         myRecyclerView.createNewDivs(myRecyclerView.maxMessages);
         myRecyclerView.render();
         myRecyclerView.divs[myRecyclerView.divs.length - 1].scrollIntoView(true);
-    }, pos);
+    }, lastSeenedId(myRecyclerView.messages));
+}
+
+function wasAlreadyTaken(messages, id) {
+    for (let i = 0; i < messages.length; i++) {
+        if (messages[i].id === id) {
+            return true;
+        }
+    }
+    return false;
 }
 
 function loadMessages(render = true) {
@@ -258,8 +251,9 @@ function loadMessages(render = true) {
         res = JSON.parse(res);
         myRecyclerView.messages = [];
         res.forEach(msg => {
-            const message = new Message(msg[1], msg[3], msg[2]);
-            myRecyclerView.messages.unshift(message);
+            const message = new Message(msg["owner_id"], msg.data, msg.date, msg.id);
+            if (!wasAlreadyTaken(myRecyclerView.messages, msg.id))
+                myRecyclerView.messages.push(message);
         });
         if (render) {
             myRecyclerView.render();
@@ -296,7 +290,6 @@ loadDialogs();
 initUi();
 
 
-/*let timer = setInterval(() => {
+let timer = setInterval(() => {
     loadMessages(false);
-}, 1000);
-*/
+},2000);

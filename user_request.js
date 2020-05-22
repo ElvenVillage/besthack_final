@@ -9,7 +9,7 @@ function notInDisplayed(n) {
     return true;
 }
 var pos = 0;
-function more(problem, problemId) {
+function more(problem, problemID) {
         fetch('https://besthack.newpage.xyz/ajax_api/user_info.php?id=' + problem["user_id"])
             .then(res => res.json())
             .then(user => {
@@ -51,7 +51,7 @@ function more(problem, problemId) {
                 statusProblem = document.createElement('div');
                 statusProblem.className = 'column';
                 linkToChat = document.createElement('a');
-                linkToChat.href = 'https://besthack.newpage.xyz/test/chat.html?id=0' + problemId;
+                linkToChat.href = 'https://besthack.newpage.xyz/test/chat.html?id=0' + problemID;
                 statusFigure = document.createElement('figure');
                 statusFigure.className = "image is-64x64";
                 statusImg = document.createElement('img');
@@ -75,7 +75,7 @@ function more(problem, problemId) {
 
 function loadTasks(pos) {
     var tasks = [];
-    fetch('https://besthack.newpage.xyz/ajax_api/last_tasks.php?lid='+(pos+1))
+    fetch('https://besthack.newpage.xyz/ajax_api/last_tasks_user.php?lid='+(pos+1))
         .then(res => 
             res.json()
         )
