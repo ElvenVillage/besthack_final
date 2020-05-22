@@ -1,14 +1,18 @@
 var container = document.getElementById("requests-list");
 
 
-
+var displayed =[];
+function notInDisplayed(n) {
+    for (let i = 0; i < displayed.length; i++) {
+        if (displayed[i] === n) return false;
+    }
+    return true;
+}
 var pos = 0;
-function more(problems) {
-    for (let i = 0; i < problems.length; i++) {
-        fetch('https://besthack.newpage.xyz/ajax_api/user_info.php?id=' + problems[i]["user_id"])
+function more(problem) {
+        fetch('https://besthack.newpage.xyz/ajax_api/user_info.php?id=' + problem["user_id"])
             .then(res => res.json())
             .then(user => {
-                var problem = problems[i];
 
                 var div = document.createElement('div');
                 div.className = 'columns';
@@ -39,7 +43,7 @@ function more(problems) {
                 textProblem.className = 'column is-8';
                 textProblemSpan = document.createElement('span');
                 textProblemSpan.style.fontWeight = 'bold';
-                textProblemSpan.innerText = problem.subject + ':\n';
+                textProblemSpan.innerText = problem.title + ':\n';
                 textProblem.style = 'padding-top: 20px'
                 textProblem.appendChild(textProblemSpan);
                 textProblem.innerHTML +=  problem.data;
@@ -60,25 +64,26 @@ function more(problems) {
 
                 div.appendChild(profile); div.appendChild(textProblem); div.appendChild(statusProblem);
                 container.appendChild(div);
-    })
-}    pos += problems.length;
+                pos++;
+            });
 }
 
 
 
 function loadTasks(pos) {
     var tasks = [];
-    fetch('https://besthack.newpage.xyz/ajax_api/last_tasks.php?lid='+pos)
+    fetch('https://besthack.newpage.xyz/ajax_api/last_tasks.php?lid='+(pos+1))
         .then(res => 
             res.json()
         )
         .then(response => {
             for (let i = 0; i < response.length; i++) {
-                pos++;
+                if (notInDisplayed(i)) {
+                    displayed.push(i)
                 fetch('https://besthack.newpage.xyz/ajax_api/task_info.php?id=' + response[i])
                     .then(response2 => response2.json())
-                    .then(response2 => more([response2]))
-            }
+                    .then(response2 => more(response2))
+            }}
         })
 }
 
