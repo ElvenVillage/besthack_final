@@ -20,7 +20,7 @@
 	</div>
 	
     <div class="box" style="">
-        <div id="message-slider" style="width: 100%;  overflow-y: scroll; overflow-x: hidden;">
+        <div id="message-slider" style='width: 100%; max-height: 35vh; overflow-y: scroll; overflow-x: hidden; scroll'>
             <div id='texter' style=' min-height:40vh; width:30vw; margin-left: 10%;'></div>
 
             <script src='../functions/fun.js'></script>
@@ -42,7 +42,11 @@
         <div class="control column is-four-fifths">
             <input type="text" class="input" id='input'></div>
         <div class="control column">
-            <input type="button" onclick='b_send(input.value)' class="input" id='submit' value="отправитьб"></div>
+            <div class="columns is-mobile is-centered " style=" margin: 0 45%; ">
+                <div class="column ">
+                    <div class="button is-size-4" onclick='b_send(input.value)'  type="button" id='submit' style="background-color: #25c7d9; border-radius: 5px;color: white; font-weight: normal ; ">ОТПРАВИТЬ</div>
+                </div>
+            </div>
     </div>
 
     <script src="./chat.js"></script>
