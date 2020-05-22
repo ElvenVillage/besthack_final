@@ -4,6 +4,16 @@ let currentChatId = -1;
 
 let latestTimestamp = Date.parse('March 7, 2014');
 
+function lastSeenedId(messages) {
+    let maxi = 30000;
+    for (let i = 0; i < messages.length; i++) {
+        if (parseInt(messages[i].id) < maxi) {
+            maxi = parseInt(messages[i].id);
+        }
+    }
+    return maxi;
+}
+
 //Функция дял ajax-get запросов, вводится адрес и функция для возврата(необязательно);
 function ajax(url, fun = false) {
     var xmlhttp = new XMLHttpRequest();
@@ -65,10 +75,11 @@ function user_info_quick(uid, fun) {
 
 
 class Message {
-    constructor(owner, text, timestamp) {
+    constructor(owner, text, timestamp, id) {
         this.owner = owner;
         this.text = text;
         this.timestamp = timestamp;
+        this.id = id;
     }
 }
 
@@ -147,7 +158,7 @@ class RecyclerView {
 
 
     render() {
-        for (let i = 0; i < Math.min(this.maxMessages, this.messages.length); i++) {
+        for (let i = 0; i < Math.min(this.maxMessages-1, this.messages.length); i++) {
             const ownerId = this.messages[this.pos + i].owner;
             let owner = {};
             let index = 0;
@@ -183,7 +194,7 @@ class RecyclerView {
         this.container.addEventListener('click', () => {
             //const currentScroll = this.container.scrollTop;
             //if (currentScroll < 10) {
-            this.pos += this.maxMessages;
+            this.pos += this.maxMessages - 1;
             loadMoreMessages(this.pos);
             return;
             // }
@@ -204,7 +215,8 @@ function loadUsers() {
 
 
 function loadDialogs() {
-    currentChatId = 20;
+    currentChatId = window.location.href.slice(window.location.href.length-3, window.location.href.length);
+    if (currentChatId[0] == "0") currentChatId = currentChatId.slice(currentChatId.length-2,currentChatId.length);
     loadUsers();
 
 }
@@ -217,14 +229,24 @@ function loadMoreMessages(pos) {
     get_messages(currentChatId, (res) => {
         res = JSON.parse(res);
         res.forEach(msg => {
-            const message = new Message(msg[1], msg[3], msg[2]);
-            myRecyclerView.unshift(message);
+            const message = new Message(msg["owner_id"], msg.data, msg.date, msg.id);
+            if (!wasAlreadyTaken(myRecyclerView.messages, msg.id))
+                myRecyclerView.messages.unshift(message);
         });
 
         myRecyclerView.createNewDivs(myRecyclerView.maxMessages);
         myRecyclerView.render();
         myRecyclerView.divs[myRecyclerView.divs.length - 1].scrollIntoView(true);
-    }, pos);
+    }, lastSeenedId(myRecyclerView.messages));
+}
+
+function wasAlreadyTaken(messages, id) {
+    for (let i = 0; i < messages.length; i++) {
+        if (messages[i].id === id) {
+            return true;
+        }
+    }
+    return false;
 }
 
 function loadMessages(render = true) {
@@ -232,8 +254,9 @@ function loadMessages(render = true) {
         res = JSON.parse(res);
         myRecyclerView.messages = [];
         res.forEach(msg => {
-            const message = new Message(msg["owner_id"], msg.data, msg.date);
-            myRecyclerView.messages.unshift(message);
+            const message = new Message(msg["owner_id"], msg.data, msg.date, msg.id);
+            if (!wasAlreadyTaken(myRecyclerView.messages, msg.id))
+                myRecyclerView.messages.push(message);
         });
         if (render) {
             myRecyclerView.render();
@@ -272,7 +295,6 @@ loadDialogs();
 initUi();
 
 
-/*let timer = setInterval(() => {
+let timer = setInterval(() => {
     loadMessages(false);
-}, 1000);
-*/
+},2000);
