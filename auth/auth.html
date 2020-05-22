@@ -4,57 +4,160 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Вход</title>
+    <title>T-Support-Заявка</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' type='text/css' href='style/index.css'>
+    <script src="bachground.js"></script>
+
+    <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css" />
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="vendor/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
+    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+
+    <!-- THEME STYLES -->
+    <link href="css/layout.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Favicon -->
+
 </head>
 
 <body>
-    <section class="hero is-info">
-        <div class="hero-body">
-            <div class="container">
+
+    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation" style="border-radius: 0%;">
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+
+                // Get all "navbar-burger" elements
+                const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+                // Check if there are any navbar burgers
+                if ($navbarBurgers.length > 0) {
+
+                    // Add a click event on each of them
+                    $navbarBurgers.forEach(el => {
+                        el.addEventListener('click', () => {
+
+                            // Get the target from the "data-target" attribute
+                            const target = el.dataset.target;
+                            const $target = document.getElementById(target);
+
+                            // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+                            el.classList.toggle('is-active');
+                            $target.classList.toggle('is-active');
+
+                        });
+                    });
+                }
+
+            });
+        </script>
+
+        <div class="navbar-brand">
+            <a class="navbar-item " href="" https://besthack.newpage.xyz/ ">
+                <div class="header_logo ">
+                    <img src="https://psv4.userapi.com/c856416/u101842971/docs/d2/386d352036a7/logo1-01.png?extra=ZlcraB9SQG09q2Pex_w5YcegxwouGTcEuw1VqE-musP9Qo5bs5LcKv-Bi7E1nN5j-hdo6F6j2LSbGtb_Bf0ltE03fpZkQ9JUZDMENmWZo17GqBfx3ODYQfxNf7ES6yc15slah2xuuCMCgyqgmj9JDJXT ">
+                </div>
+            </a>
+            <div class="navbar-end ">
+                <a role="button " class="navbar-burger burger " aria-label="menu " aria-expanded="false " data-target="navbarBasicExample ">
+                    <span aria-hidden="true "></span>
+                    <span aria-hidden="true "></span>
+                    <span aria-hidden="true "></span>
+                </a>
             </div>
         </div>
-    </section>
-    <div class="container" style="padding:3% 20% 10%;">
-        <form>
-            <h1 class="title" style="text-align: center;"> Вход </h1>
-            <div class="field">
-                <p class="control has-icons-left has-icons-right">
-                    <input class="input" type="email" placeholder="Email">
-                    <span class="icon is-small is-left">
-                    <i class="fas fa-envelope"></i>
-                  </span>
-                    <span class="icon is-small is-left">
-                        <img src="user.jpg" class="is-rounded">
-                  </span>
-                </p>
-            </div>
-            <div class="field">
-                <p class="control has-icons-left">
-                    <input class="input" type="password" placeholder="Password">
-                    <span class="icon is-small is-left">
-                        <img src="user.jpg" class="is-rounded">
-                  </span>
-                </p>
-            </div>
-            <div class="field" style="text-align: center ;">
-                <p class="control">
-                    <button class="button is-success is-fullwidth">
-                    Войти
-                  </button>
-                </p>
-                <a href='#'>Регистрация</a>
+
+        <div id="navbarBasicExample " class="navbar-menu ">
+            <div class="navbar-end ">
+                <div class="navbar-item has-dropdown is-hoverable ">
+                    <a class="navbar-link is-arrowless is-arrowless ">
+                        Все продукты
+                    </a>
+
+
+                </div>
+
+                <div class="navbar-item has-dropdown is-hoverable ">
+                    <a class="navbar-link is-arrowless ">
+                        Техподдержка
+                </a>
+
+
+                </div>
+
+                <div class="navbar-item has-dropdown is-hoverable ">
+                    <a class="navbar-link is-arrowless ">
+                    Авторизация
+                </a>
+                </div>
+                <div class="navbar-item has-dropdown is-hoverable ">
+                    <a class="navbar-link is-arrowless ">
+                    Выход
+                </a>
+
+
+                </div>
+                <div class="navbar-item "></div>
             </div>
 
-        </form>
-    </div>
 
-    <footer>
-        <hr>
-        <p>Developed by &#171;NewPage1 &#187; &copy;2020</p>
-    </footer>
+        </div>
+    </nav>
+    <style>
+        body {
+            background-image: -webkit-gradient(linear, right top, left bottom, from(#F2E3C6), to(#A7A1A5));
+            background-image: linear-gradient(to left bottom, #F2E3C6 0%, #A7A1A5 100%);
+        }
+    </style>
+
+    <div class=" container " style="margin: 0 10%; margin-top: 50px;background-color: white; ">
+      
+            <div  class="text-center " style="background-color:#1ec4da; height: 100px; "> 
+            </div>
+            
+            <div class="container " style="padding:3% 20% 10%; ">
+                <form>
+                    <h1 class="title " style="text-align: center; "> Вход </h1>
+                    <div class="field ">
+                        <p class="control has-icons-left has-icons-right ">
+                            <input class="input " type="email " placeholder="Email ">
+                            <span class="icon is-small is-left ">
+                            <i class="fas fa-envelope "></i>
+                          </span>
+                            <span class="icon is-small is-left ">
+                                <img src="user.jpg " class="is-rounded ">
+                          </span>
+                        </p>
+                    </div>
+                    <div class="field ">
+                        <p class="control has-icons-left ">
+                            <input class="input " type="password " placeholder="Password ">
+                            <span class="icon is-small is-left ">
+                                <img src="user.jpg " class="is-rounded ">
+                          </span>
+                        </p>
+                    </div>
+                    <div class="field " style="text-align: center ; ">
+                        <p class="control ">
+                            <button class="button is-success is-fullwidth " style="background-color: #25c7d9; ">
+                            Войти
+                          </button>
+                          
+                        </p>
+                       
+                    </div>
+        
+                </form>
+            </div>
+        </div>
+        
+        <footer style="text-align: center; ">
+            <hr>
+            <p style="color: black; font-weight: normal; ">Developed by &#171;NewPage1 &#187; &copy;2020</p>
+        </footer>
 
 </body>
 
