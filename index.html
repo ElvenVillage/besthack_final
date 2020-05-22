@@ -120,9 +120,12 @@
             </a>
     
             <div id="aside1" style="width: 300px; display: none; box-shadow: 0 0 10px rgba(0,0,0,0.5);">
+			
                 <div class="box " style="border-radius: 0; width: 100vw; ">
-    
-    
+				<a class="delete is-large" style="margin-bottom: -5vh;" id="btn_del"></a>
+			<iframe id="inlineFrameExample" title="Inline Frame Example" width="300px" height="550px" src="bot/index.html">
+		</iframe>
+    <!--
                     <div class="text-center " style="background-color:#1ec4da; height: 100px; ">
                         <h2 class="title is-size-2 " style="padding-top: 25px; color: white; text-align: center; "><b>Свяжитесь с нами!</h2>
                             <h3 class="title is-size-4 " style=" color: white; text-align: center; "><b>Перейти в чат</h3>
@@ -175,12 +178,15 @@
                                
                                
                     
-                            </div>
+                            </div> -->
                 </div>
             </div>
             <script>
                 //Невидно для гостей сайта
-               
+               btn_del.onclick= function() {
+				aside1.style.display = "none ";
+                    btn_f.style.display = "flex ";
+			   }
     
                 btn_f.onclick= function() {
                     aside1.style.display = "flex ";
@@ -191,7 +197,7 @@
                 #aside1 {
                     position: fixed;
                     bottom: 0;
-                    right: 0px;
+                    right: 10px;
                    
                     z-index: 101;
                     width: 240px;
