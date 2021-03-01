@@ -10,15 +10,17 @@
 </head>
 
 <body>
-    <div class="hero" style="background-color: #26c6da; margin-left: 20%; margin-right: 20%;">
+
+    <div class="hero" style="background-color: #26c6da; ">
         <div class="hero-body">
-            <h2 class="title is-size-2 " style=" color: white; text-align: center; margin-top: -5vh;"><b>Свяжитесь с нами!</h2>
-				<h3 class="title is-size-5 " style=" color: white; text-align: center;margin: -2vh 0; ">Мы онлайн!</h3>
+            <h2 class="title is-size-2 " style=" color: white; text-align: center; margin-top: -8vh;"><b>Свяжитесь с нами!</h2>
+				<h3 class="title is-size-5 " style=" color: white; text-align: center;margin: -2vh 0; margin-bottom: -3vh;">Мы онлайн!</h3>
 			
         </div>
-    </div>
-    <div class="box" style="margin-right: 20%;margin-left: 20%;">
-        <div id="message-slider" style="width: 100%; height: 400px; overflow-y: scroll; overflow-x: hidden;">
+	</div>
+	
+    <div class="box" style="">
+        <div id="message-slider" style='width: 100%; max-height: 35vh; overflow-y: scroll; overflow-x: hidden; scroll'>
             <div id='texter' style=' min-height:40vh; width:30vw; margin-left: 10%;'></div>
 
             <script src='../functions/fun.js'></script>
@@ -36,11 +38,15 @@
 
 
     </div>
-    <div style="margin-left: 30%; margin-right: 30%" class="columns">
+    <div style="margin-left: 10%; margin-right: 10%; margin-bottom: -10vh;" class="columns">
         <div class="control column is-four-fifths">
             <input type="text" class="input" id='input'></div>
         <div class="control column">
-            <input type="button" onclick='b_send(input.value)' class="input" id='submit' value="отправитьб"></div>
+            <div class="columns is-mobile is-centered " style=" margin: 0 45%; ">
+                <div class="column ">
+                    <div class="button is-size-4" onclick='b_send(input.value)'  type="button" id='submit' style="background-color: #25c7d9; border-radius: 5px;color: white; font-weight: normal ; ">ОТПРАВИТЬ</div>
+                </div>
+            </div>
     </div>
 
     <script src="./chat.js"></script>
