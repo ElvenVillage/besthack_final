@@ -37,24 +37,24 @@ var loadMore = function() {
                       username.innerText = response.name;
                       div2.appendChild(username);
                       var profileDiv = document.createElement('div');
-                       profileDiv.className = 'column is-1';
-                       var profileLink = document.createElement('a');
-                       profileLink.style.color = 'black';
-                       profileLink.href = '#';
-                       profileLink.innerText = 'Профиль'
-                       var chatDiv = document.createElement('div');
-                       chatDiv.className = 'column is-1';
-                       var chatLink = document.createElement('a');
-                       chatLink.style.color = 'black'
-                       chatLink.href = '#';
-                       chatLink.innerText = 'Чат'
-                       chatDiv.appendChild(chatLink);
-                       profileDiv.appendChild(profileLink);
+                      profileDiv.className = 'column is-1';
+                      var profileLink = document.createElement('a');
+                      profileLink.style.color = 'black';
+                      profileLink.href = './p_lk.html?' + user_ids[i];
+                      profileLink.innerText = 'Профиль'
+                      var chatDiv = document.createElement('div');
+                      chatDiv.className = 'column is-1';
+                      var chatLink = document.createElement('a');
+                      chatLink.style.color = 'black'
+                      chatLink.href = './admin_chat.html';
+                      chatLink.innerText = 'Чат'
+                      chatDiv.appendChild(chatLink);
+                      profileDiv.appendChild(profileLink);
            
-                       div.appendChild(div1); div.appendChild(div2);
-                       div.appendChild(profileDiv); div.appendChild(chatDiv);
+                      div.appendChild(div1); div.appendChild(div2);
+                      div.appendChild(profileDiv); div.appendChild(chatDiv);
            
-                       listElm.appendChild(div);
+                      listElm.appendChild(div);
            
                     })
               }
